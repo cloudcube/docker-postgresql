@@ -24,7 +24,7 @@ RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
 
 #/etc/ssl/private can't be accessed from within container for some reason
 #(@andrewgodwin says it's something AUFS related)
-RUN mkdir /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
+#RUN mkdir /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 #add postgresql config file
 ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
@@ -42,4 +42,9 @@ EXPOSE 5432
 
 #exec run shell script
 CMD ["/usr/local/bin/run"]
+
+#sudo config
+#comment comment out: #Default requiretty
+RUN sed -i -e"s/^Defaults\s*requiretty/#Defaults  requiretty" /etc/sudoers
+
 
