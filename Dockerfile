@@ -27,7 +27,7 @@ RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
 #RUN mkdir /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 #sudo config
-sed -i -e "s/^Defaults\s*requiretty/#Defaults  requiretty/g" /etc/sudoers
+RUN sed -i -e "s/^Defaults\s*requiretty/#Defaults  requiretty/g" /etc/sudoers
 
 #add postgresql config file
 ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
