@@ -9,8 +9,8 @@ MAINTAINER hipin.zhao, zhaohaibin@outlook.com
 #make sure the package repository is up to date.
 RUN yum update -y
 
-#install wget
-RUN yum install wget telnet git -y
+#install wget telnet git and sudo
+RUN yum install wget telnet git sudo -y
 
 #install epel
 RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm && yum install epel-release-*.rpm -y
@@ -21,6 +21,10 @@ RUN yum update -y
 #install postgresql-server postgresql-client
 RUN wget http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-redhat93-9.3-1.noarch.rpm && yum install pgdg-redhat93-9.3-1.noarch.rpm -y
 RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
+
+#/etc/ssl/private can't be accessed from within container for some reason
+#(@andrewgodwin says it's something AUFS related)
+RUN mkdir /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 #add postgresql config file
 ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
