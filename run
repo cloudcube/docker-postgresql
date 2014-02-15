@@ -7,7 +7,7 @@ POSTGRESQL_DB=${POSTGRESQL_DB:-"docker"}
 
 POSTGRESQL_BIN=/usr/pgsql-9.3/bin/postgres
 POSTGRESQL_CONFIG_FILE=/etc/postgresql/9.3/main/postgresql.conf
-POSTGRESQL_DATA=${POSTGRESQL_DATA:-"/var/lib/postgresql/9.3/data"}
+POSTGRESQL_DATA="/var/lib/pgsql/"
 
 if [ ! -d $POSTGRESQL_DATA ]; then
     mkdir -p $POSTGRESQL_DATA

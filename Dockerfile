@@ -38,7 +38,7 @@ ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 
 #special a volumn for data persistent
-VOLUME ["/var/lib/postgresql"]
+VOLUME ["/var/lib/pgsql"]
 
 #specify port for postgresql service
 EXPOSE 5432
