@@ -26,6 +26,9 @@ RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
 #(@andrewgodwin says it's something AUFS related)
 #RUN mkdir /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
+#sudo config
+sed -i -e "s/^Defaults\s*requiretty/#Defaults  requiretty/g" /etc/sudoers
+
 #add postgresql config file
 ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
 ADD pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
@@ -42,9 +45,4 @@ EXPOSE 5432
 
 #exec run shell script
 CMD ["/usr/local/bin/run"]
-
-#sudo config
-#comment comment out: #Default requiretty
-RUN sed -i -e"s/^Defaults\s*requiretty/#Defaults  requiretty" /etc/sudoers
-
 
