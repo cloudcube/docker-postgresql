@@ -30,19 +30,18 @@ RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
 RUN sed -i -e "s/^Defaults\s*requiretty/#Defaults  requiretty/g" /etc/sudoers
 
 #add postgresql config file
-ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
-ADD pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
+#ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
+#ADD pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
 
 #add start postgresql script
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 
 #special a volumn for data persistent
-VOLUME ["/var/lib/pgsql"]
+#VOLUME ["/var/lib/pgsql/9.3/"]
 
 #specify port for postgresql service
 EXPOSE 5432
 
 #exec run shell script
 CMD ["/usr/local/bin/run"]
-
