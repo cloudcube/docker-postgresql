@@ -6,6 +6,8 @@ FROM centos
 
 MAINTAINER hipin.zhao, zhaohaibin@outlook.com
 
+ENV REFRESHED_AT 2014-10-13
+
 #make sure the package repository is up to date.
 RUN yum update -y
 
