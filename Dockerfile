@@ -6,7 +6,7 @@ FROM centos
 
 MAINTAINER hipin.zhao, zhaohaibin@outlook.com
 
-ENV REFRESHED_AT 2014-10-13
+ENV REFRESHED_AT 2015-1-10
 
 #make sure the package repository is up to date.
 RUN yum update -y
@@ -21,8 +21,8 @@ RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.r
 RUN yum update -y
 
 #install postgresql-server postgresql-client
-RUN wget http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-redhat93-9.3-1.noarch.rpm && yum install pgdg-redhat93-9.3-1.noarch.rpm -y
-RUN yum install postgresql93-server postgresql93 postgresql93-devel -y
+RUN wget http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm && yum install pgdg-centos94-9.4-1.noarch.rpm -y
+RUN yum install postgresql94-server postgresql94 postgresql94-devel -y
 
 #/etc/ssl/private can't be accessed from within container for some reason
 #(@andrewgodwin says it's something AUFS related)

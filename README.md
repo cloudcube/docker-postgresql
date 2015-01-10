@@ -9,14 +9,14 @@ sudo mkdir ~/pgdata
 ```
 ## run docker backend  
 ```
-docker run -d -p 5432:5432 -v ~/pgdata:/var/lib/pgsql/9.3:rw -e POSTGRESQL_USER=<Your username> -e POSTGRESQL_PASS=<Your password> -e POSTGRESQL_DB=<Database name> &   
+docker run -d -p 5432:5432 -v ~/pgdata:/var/lib/pgsql/9.4:rw -e POSTGRESQL_USER=<Your username> -e POSTGRESQL_PASS=<Your password> -e POSTGRESQL_DB=<Database name> &   
 e.g:  
-sudo docker run -d -p 5432:5432 -v ~/pgdata:/var/lib/pgsql/9.3:rw -e POSTGRESQL_USER=demo -e POSTGRESQL_PASS=demo -e POSTGRESQL_DB=demo 'cloudcube/postgresql' &  
+sudo docker run -d -p 5432:5432 -v ~/pgdata:/var/lib/pgsql/9.4:rw -e POSTGRESQL_USER=demo -e POSTGRESQL_PASS=demo -e POSTGRESQL_DB=demo 'cloudcube/postgresql' &  
 ```
 ## how to use?  
 ```
-sudo rpm -Uvh http://yum.postgresql.org/9.3/fedora/fedora-20-x86_64/pgdg-fedora93-9.3-1.noarch.rpm  
-sudo yum install postgresql93  
+sudo rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm  
+sudo yum install postgresql94  
 psql -h localhost -p 5432 -U demo -W demo  
 ```
 ## note    
